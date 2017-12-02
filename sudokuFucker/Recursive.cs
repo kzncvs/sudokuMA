@@ -62,16 +62,9 @@ namespace sudokuFucker
                 }
             }
 
-            var clear = new int[0];
-            foreach (var i in finarr)
-            {
-                if (Array.IndexOf(clear, i) == -1)
-                {
-                    Append(ref clear, i);
-                }
-            }
+            Clear(ref finarr);
 
-            return clear;
+            return finarr;
         }
 
         private static bool CanWePut(int index, int value, int[] matrix)

@@ -1,4 +1,6 @@
-﻿namespace sudokuFucker
+﻿using System;
+
+namespace sudokuFucker
 {
     public class Gimmicks
     {
@@ -11,6 +13,19 @@
             }
             kek[arr.Length] = newItem;
             arr = kek;
+        }
+
+        public static void Clear(ref int[] arr)
+        {
+            var clear = new int[0];
+            foreach (var i in arr)
+            {
+                if (Array.IndexOf(clear, i) == -1)
+                {
+                    Append(ref clear, i);
+                }
+            }
+            arr = clear;
         }
     }
 }

@@ -9,9 +9,9 @@ namespace sudokuFucker
     {
         public static void Main(string[] args)
         {
-            //var stopWatch = new Stopwatch();
-            //stopWatch.Start();
-            var kek = new Sudoku(new int[81]
+            var stopWatch = new Stopwatch();
+            stopWatch.Start();
+            var kek = new Sudoku(new int[]
             {
                 4, 0, 3, 0, 0, 2, 0, 0, 0,
                 5, 0, 0, 0, 6, 0, 1, 2, 0,
@@ -24,9 +24,9 @@ namespace sudokuFucker
                 0, 0, 0, 8, 0, 4, 5, 0, 0
             });
             var solved = Recursive.Solve(kek);
-            //stopWatch.Stop();
+            stopWatch.Stop();
             Console.WriteLine(solved.SudokuToString());
-            //Console.WriteLine(stopWatch.ElapsedMilliseconds.ToString() + " ms");
+            Console.WriteLine(stopWatch.ElapsedMilliseconds.ToString() + " ms");
         }
     }
 }

@@ -2,7 +2,20 @@
 {
     public class Sudoku
     {
-        public int[] Matrix;
+        private int[] _matrix;
+
+
+        public int[] Matrix
+        {
+            get => _matrix;
+            set
+            {
+                if (value.Length == 81)
+                {
+                    _matrix = value;
+                }
+            }
+        }
 
         public Sudoku()
         {
