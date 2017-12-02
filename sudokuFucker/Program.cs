@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using static sudokuFucker.Sudoku;
 using static sudokuFucker.Recursive;
 
@@ -8,6 +9,8 @@ namespace sudokuFucker
     {
         public static void Main(string[] args)
         {
+            //var stopWatch = new Stopwatch();
+            //stopWatch.Start();
             var kek = new Sudoku(new int[81]
             {
                 4, 0, 3, 0, 0, 2, 0, 0, 0,
@@ -20,7 +23,10 @@ namespace sudokuFucker
                 0, 0, 0, 0, 0, 5, 0, 9, 6,
                 0, 0, 0, 8, 0, 4, 5, 0, 0
             });
-            Recursive.Solve(kek).Print();
+            var solved = Recursive.Solve(kek);
+            //stopWatch.Stop();
+            Console.WriteLine(solved.SudokuToString());
+            //Console.WriteLine(stopWatch.ElapsedMilliseconds.ToString() + " ms");
         }
     }
 }

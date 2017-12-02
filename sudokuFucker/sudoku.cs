@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace sudokuFucker
+﻿namespace sudokuFucker
 {
     public class Sudoku
     {
@@ -27,7 +25,7 @@ namespace sudokuFucker
             Matrix = input;
         }
 
-        public void Print()
+        public string SudokuToString()
         {
             var fin = "";
             for (var i = 1; i < 82; i++)
@@ -46,7 +44,7 @@ namespace sudokuFucker
                     fin += "\n";
                 }
             }
-            Console.WriteLine(fin);
+            return fin;
         }
     }
 }
