@@ -1,0 +1,6 @@
+C:\Users\Sergey Kazancev\RiderProjects\sudokuFucker\sudokuFucker\bin\Debug\sudokuFucker.exe
+C:\Users\Sergey Kazancev\RiderProjects\sudokuFucker\sudokuFucker\bin\Debug\sudokuFucker.pdb
+C:\Users\Sergey Kazancev\RiderProjects\sudokuFucker\sudokuFucker\obj\Debug\sudokuFucker.csprojResolveAssemblyReference.cache
+C:\Users\Sergey Kazancev\RiderProjects\sudokuFucker\sudokuFucker\obj\Debug\sudokuFucker.csproj.CoreCompileInputs.cache
+C:\Users\Sergey Kazancev\RiderProjects\sudokuFucker\sudokuFucker\obj\Debug\sudokuFucker.exe
+C:\Users\Sergey Kazancev\RiderProjects\sudokuFucker\sudokuFucker\obj\Debug\sudokuFucker.pdb
