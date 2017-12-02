@@ -1,6 +1,4 @@
-﻿using System;
-using static sudokuFucker.Sudoku;
-using static sudokuFucker.Gimmicks;
+﻿using static sudokuFucker.Gimmicks;
 
 namespace sudokuFucker
 {
@@ -35,7 +33,7 @@ namespace sudokuFucker
             {
                 Append(ref finarr, i);
             }
-            var nines = new int[9, 9]
+            var nines = new[,]
             {
                 {0, 1, 2, 9, 10, 11, 18, 19, 20},
                 {3, 4, 5, 12, 13, 14, 21, 22, 23},

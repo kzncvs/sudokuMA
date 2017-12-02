@@ -1,7 +1,5 @@
 ﻿using System;
 using System.Diagnostics;
-using static sudokuFucker.Sudoku;
-using static sudokuFucker.Recursive;
 
 namespace sudokuFucker
 {
@@ -11,7 +9,7 @@ namespace sudokuFucker
         {
             var stopWatch = new Stopwatch();
             stopWatch.Start();
-            var kek = new Sudoku(new int[]
+            var kek = new Sudoku(new[]
             {
                 4, 0, 3, 0, 0, 2, 0, 0, 0,
                 5, 0, 0, 0, 6, 0, 1, 2, 0,
