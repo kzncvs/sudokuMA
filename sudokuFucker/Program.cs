@@ -1,5 +1,6 @@
 ﻿using System;
 using static sudokuFucker.Sudoku;
+using static sudokuFucker.Recursive;
 
 namespace sudokuFucker
 {
@@ -19,7 +20,7 @@ namespace sudokuFucker
                 0, 0, 0, 0, 0, 5, 0, 9, 6,
                 0, 0, 0, 8, 0, 4, 5, 0, 0
             });
-            kek.Print();
+            Recursive.Solve(kek).Print();
         }
     }
 }
