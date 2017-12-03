@@ -7,7 +7,7 @@ namespace sudokuFucker
     {
         public static void Main(string[] args)
         {
-            /*var stopWatch = new Stopwatch();
+/*            var stopWatch = new Stopwatch();
             stopWatch.Start();
             var kek = new Sudoku(new[]
             {
@@ -29,7 +29,7 @@ namespace sudokuFucker
             Console.WriteLine(stopWatch.ElapsedMilliseconds.ToString() + " ms");*/
             
             var kek = new Generate();
-            kek.SwapColumnsSmall();
+            kek.Shuffle();
             Console.WriteLine(kek._basic.SudokuToString());
             
         }
