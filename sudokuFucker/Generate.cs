@@ -5,7 +5,7 @@ namespace sudokuFucker
     public class Generate
     {
         private int len = 9;
-
+        private Random rnd = new Random();
         public Sudoku _basic = new Sudoku(new[]
         {
             1, 2, 3, 4, 5, 6, 7, 8, 9,
@@ -38,7 +38,6 @@ namespace sudokuFucker
 
         private void SwapRowsSmall()
         {
-            var rnd = new Random();
             var sector = rnd.Next(0, 3);
             var toswap1 = rnd.Next(0, 3);
             var toswap2 = toswap1;
@@ -56,7 +55,6 @@ namespace sudokuFucker
 
         private void SwapColumnsSmall()
         {
-            var rnd = new Random();
             var sector = rnd.Next(0, 3);
             var toswap1 = rnd.Next(0, 3);
             var toswap2 = toswap1;
@@ -74,7 +72,6 @@ namespace sudokuFucker
 
         private void SwapRowsArea()
         {
-            var rnd = new Random();
             var toswap1 = rnd.Next(0, 3);
             var toswap2 = toswap1;
             while (toswap2 == toswap1)
@@ -94,7 +91,6 @@ namespace sudokuFucker
 
         private void SwapColumnsArea()
         {
-            var rnd = new Random();
             var toswap1 = rnd.Next(0, 3);
             var toswap2 = toswap1;
             while (toswap2 == toswap1)
@@ -114,7 +110,7 @@ namespace sudokuFucker
 
         private delegate void ShuffleMachine();
         
-        public void Shuffle(int shuffles = 1500)
+        public void Shuffle(int shuffles = 150)
         {
             var turns = new ShuffleMachine[6]
             {
@@ -122,7 +118,6 @@ namespace sudokuFucker
             };
             for (var i = 0; i < shuffles; i++)
             {
-                var rnd = new Random();
                 var kek = rnd.Next(0, 6);
                 turns[kek]();
             }
