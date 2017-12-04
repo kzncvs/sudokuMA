@@ -1,4 +1,6 @@
-﻿using static sudokuFucker.Gimmicks;
+﻿using System;
+using System.Runtime.InteropServices;
+using static sudokuFucker.Gimmicks;
 
 namespace sudokuFucker
 {
@@ -77,17 +79,18 @@ namespace sudokuFucker
             return true;
         }
 
-        private static bool RecursiveSolve(ref Sudoku puzzle, int k = 0)
+        private static bool RecursiveCount(ref Sudoku puzzle, ref int solutionsCount, int k = 0)
         {
             if (k == 81)
             {
-                return true;
+                solutionsCount++;
+                return false;
             }
             else
             {
                 if (puzzle.Matrix[k] != 0)
                 {
-                    return RecursiveSolve(ref puzzle, k + 1);
+                    return RecursiveCount(ref puzzle, ref solutionsCount, k + 1);
                 }
                 else
                 {
@@ -102,7 +105,54 @@ namespace sudokuFucker
                         if (CanWePut(k, i, puzzle.Matrix))
                         {
                             puzzle.Matrix[k] = i;
-                            if (RecursiveSolve(ref puzzle, k + 1))
+                            if (RecursiveCount(ref puzzle, ref solutionsCount, k + 1))
+                            {
+                                return true;
+                            }
+                        }
+                        else
+                        {
+                            i += 1;
+                        }
+                    }
+                }
+            }
+        }
+
+        public static int SolutionsCount(Sudoku puzzle)
+        {
+            var ss = puzzle;
+            var co = 0;
+            RecursiveCount(ref ss, ref co);
+            return co;
+        }
+        
+        private static bool Solver(ref Sudoku puzzle, int k = 0)
+        {
+            if (k == 81)
+            {
+                return true;
+            }
+            else
+            {
+                if (puzzle.Matrix[k] != 0)
+                {
+                    return Solver(ref puzzle,  k + 1);
+                }
+                else
+                {
+                    var i = 1;
+                    while (true)
+                    {
+                        if (i > 9)
+                        {
+                            puzzle.Matrix[k] = 0;
+                            return false;
+                        }
+                        if (CanWePut(k, i, puzzle.Matrix))
+                        {
+                            puzzle.Matrix[k] = i;
+                            if (Solver(ref puzzle, k + 1))
                             {
                                 return true;
                             }
@@ -118,9 +168,9 @@ namespace sudokuFucker
 
         public static Sudoku Solve(Sudoku puzzle)
         {
-            var solved = puzzle;
-            RecursiveSolve(ref solved);
-            return solved;
+            var tmp = puzzle;
+            Solver(ref tmp);
+            return tmp;
         }
     }
 }

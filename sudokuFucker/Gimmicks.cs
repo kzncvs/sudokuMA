@@ -4,9 +4,9 @@ namespace sudokuFucker
 {
     public class Gimmicks
     {
-        public static void Append(ref int[] arr, int newItem)
+        public static void Append<T>(ref T[] arr, T newItem)
         {
-            var kek = new int[arr.Length + 1];
+            var kek = new T[arr.Length + 1];
             for (var i = 0; i < arr.Length; i++)
             {
                 kek[i] = arr[i];

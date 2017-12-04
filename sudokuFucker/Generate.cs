@@ -5,7 +5,7 @@ namespace sudokuFucker
     public class Generate
     {
         private int len = 9;
-        private Random rnd = new Random();
+        private readonly Random rnd = new Random();
         public Sudoku _basic = new Sudoku(new[]
         {
             1, 2, 3, 4, 5, 6, 7, 8, 9,
@@ -112,7 +112,7 @@ namespace sudokuFucker
         
         public void Shuffle(int shuffles = 150)
         {
-            var turns = new ShuffleMachine[6]
+            var turns = new ShuffleMachine[]
             {
                 Transposing, SwapColumnsArea, SwapRowsArea, SwapColumnsArea, SwapRowsSmall, SwapColumnsSmall
             };
