@@ -81,9 +81,9 @@ namespace sudokuFucker
 
         private static bool RecursiveCount(ref Sudoku puzzle, ref int solutionsCount, int k = 0)
         {
-            solutionsCount++;
             if (k == 81)
             {
+                solutionsCount++;
                 if (solutionsCount > 1)
                 {
                     return true;
