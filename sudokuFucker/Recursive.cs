@@ -81,9 +81,13 @@ namespace sudokuFucker
 
         private static bool RecursiveCount(ref Sudoku puzzle, ref int solutionsCount, int k = 0)
         {
+            solutionsCount++;
             if (k == 81)
             {
-                solutionsCount++;
+                if (solutionsCount > 1)
+                {
+                    return true;
+                }
                 return false;
             }
             else
@@ -119,12 +123,12 @@ namespace sudokuFucker
             }
         }
 
-        public static int SolutionsCount(Sudoku puzzle)
+        public static bool IsSolutionOlnyOne(Sudoku puzzle)
         {
             var ss = puzzle;
             var co = 0;
             RecursiveCount(ref ss, ref co);
-            return co;
+            return !(co > 1);
         }
         
         private static bool Solver(ref Sudoku puzzle, int k = 0)

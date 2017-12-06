@@ -37,9 +37,11 @@ namespace sudokuFucker
                 0, 0, 0, 0, 0, 5, 0, 9, 6,
                 0, 0, 0, 8, 0, 4, 5, 0, 0
             });
-            var solved = Recursive.Solve(keke);
+            
+            var solved = Recursive.Solve(new Sudoku(keke));
             Console.WriteLine(solved.SudokuToString());
-            Console.WriteLine(keke.SudokuToString());
+            var check = Recursive.IsSolutionOlnyOne(new Sudoku(keke));
+            Console.WriteLine(check);
             stopWatch.Stop();
             Console.WriteLine(stopWatch.ElapsedMilliseconds.ToString() + " ms");
             

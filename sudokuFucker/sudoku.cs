@@ -1,4 +1,6 @@
-﻿namespace sudokuFucker
+﻿using System;
+
+namespace sudokuFucker
 {
     public class Sudoku
     {
@@ -39,6 +41,15 @@
             Matrix = input;
         }
 
+
+        public Sudoku(Sudoku prev)
+        {
+            var newMatrix = new int[prev.Matrix.Length];
+            Array.Copy(prev.Matrix, newMatrix, prev.Matrix.Length);
+            Matrix = newMatrix;
+        }
+        
+        
         public string SudokuToString()
         {
             var fin = "";
