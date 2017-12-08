@@ -1,55 +1,25 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace sudokuFucker
 {
     public class Sudoku
     {
-        private int[] _matrix;
-
-
-        public int[] Matrix
-        {
-            get => _matrix;
-            set
-            {
-                if (value.Length == 81)
-                {
-                    _matrix = value;
-                }
-            }
-        }
-
-        public Sudoku()
-        {
-            Matrix = new[]{
-                0, 0, 0, 0, 0, 0, 0, 0, 0,
-                0, 0, 0, 0, 0, 0, 0, 0, 0,
-                0, 0, 0, 0, 0, 0, 0, 0, 0,
-                
-                0, 0, 0, 0, 0, 0, 0, 0, 0,
-                0, 0, 0, 0, 0, 0, 0, 0, 0,
-                0, 0, 0, 0, 0, 0, 0, 0, 0,
-                
-                0, 0, 0, 0, 0, 0, 0, 0, 0,
-                0, 0, 0, 0, 0, 0, 0, 0, 0,
-                0, 0, 0, 0, 0, 0, 0, 0, 0
-            };
-        }
+        public readonly List<int> Matrix;
+        public readonly int Size;
 
         public Sudoku(int[] input)
         {
-            Matrix = input;
+            Matrix = input.ToList();
+            Size = (int) Math.Sqrt(Math.Sqrt(Matrix.Count));
         }
-
 
         public Sudoku(Sudoku prev)
         {
-            var newMatrix = new int[prev.Matrix.Length];
-            Array.Copy(prev.Matrix, newMatrix, prev.Matrix.Length);
-            Matrix = newMatrix;
+            Matrix = new List<int>(prev.Matrix);
         }
-        
-        
+
         public string SudokuToString()
         {
             var fin = "";

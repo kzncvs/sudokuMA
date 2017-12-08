@@ -1,15 +1,14 @@
-﻿using System;
-using System.Runtime.InteropServices;
-using static sudokuFucker.Gimmicks;
+﻿using System.Collections.Generic;
+using System.Linq;
 
 namespace sudokuFucker
 {
     public class Recursive
     {
-        private static int[] FindAll(int num)
+        private static List<int> FindAll(int num)
         {
             var last = 0;
-            var finarr = new int[0];
+            var finarr = new List<int>();
             for (var i = 0; i < 10; i++)
             {
                 var now = 9 * i;
@@ -17,7 +16,7 @@ namespace sudokuFucker
                 {
                     for (var j = last; j < now; j++)
                     {
-                        Append(ref finarr, j);
+                        finarr.Add(j);
                     }
                     break;
                 }
@@ -33,7 +32,7 @@ namespace sudokuFucker
             }
             for (var i = minval; i < minval + 73; i += 9)
             {
-                Append(ref finarr, i);
+                finarr.Add(i);
             }
             var nines = new[,]
             {
@@ -47,6 +46,7 @@ namespace sudokuFucker
                 {57, 58, 59, 66, 67, 68, 75, 76, 77},
                 {60, 61, 62, 69, 70, 71, 78, 79, 80}
             };
+          //NEED REFACTORING!!!
             for (var i = 0; i < 9; i++)
             {
                 for (var j = 0; j < 9; j++)
@@ -55,19 +55,17 @@ namespace sudokuFucker
                     {
                         for (var k = 0; k < 9; k++)
                         {
-                            Append(ref finarr, nines[i, k]);
+                            finarr.Add(nines[i, k]);
                         }
                         break;
                     }
                 }
             }
 
-            Clear(ref finarr);
-
-            return finarr;
+            return finarr.Distinct().ToList();
         }
 
-        private static bool CanWePut(int index, int value, int[] matrix)
+        private static bool CanWePut(int index, int value, List<int> matrix)
         {
             foreach (var i in FindAll(index))
             {
