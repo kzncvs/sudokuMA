@@ -39,7 +39,7 @@ namespace sudokuFucker
             });
 
             
-            var check = Recursive.Solve(new Sudoku(keke));
+            var check = Recursive.Solve(new Sudoku(kek));
             Console.WriteLine(check.SudokuToString());
             stopWatch.Stop();
             Console.WriteLine(stopWatch.ElapsedMilliseconds.ToString() + " ms");

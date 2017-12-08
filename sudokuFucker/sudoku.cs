@@ -11,8 +11,8 @@ namespace sudokuFucker
 
         public Sudoku(int[] input)
         {
+            Size = input.Length; // WHAT?
             Matrix = input.ToList();
-            Size = (int) Math.Sqrt(Math.Sqrt(Matrix.Count));
         }
 
         public Sudoku(Sudoku prev)
@@ -22,6 +22,7 @@ namespace sudokuFucker
 
         public string SudokuToString()
         {
+            Console.WriteLine(Size);
             var fin = "";
             for (var i = 1; i < 82; i++)
             {
