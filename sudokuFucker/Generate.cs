@@ -122,5 +122,6 @@ namespace sudokuFucker
                 turns[kek]();
             }
         }
+        
     }
 }

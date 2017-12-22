@@ -4,3 +4,9 @@ C:\Users\Sergey Kazancev\RiderProjects\sudokuFucker\sudokuFucker\obj\Debug\sudok
 C:\Users\Sergey Kazancev\RiderProjects\sudokuFucker\sudokuFucker\obj\Debug\sudokuFucker.csproj.CoreCompileInputs.cache
 C:\Users\Sergey Kazancev\RiderProjects\sudokuFucker\sudokuFucker\obj\Debug\sudokuFucker.exe
 C:\Users\Sergey Kazancev\RiderProjects\sudokuFucker\sudokuFucker\obj\Debug\sudokuFucker.pdb
+C:\Users\Sergo\RiderProjects\sudokuMA\sudokuFucker\bin\Debug\sudokuFucker.exe
+C:\Users\Sergo\RiderProjects\sudokuMA\sudokuFucker\bin\Debug\sudokuFucker.pdb
+C:\Users\Sergo\RiderProjects\sudokuMA\sudokuFucker\obj\Debug\sudokuFucker.csprojResolveAssemblyReference.cache
+C:\Users\Sergo\RiderProjects\sudokuMA\sudokuFucker\obj\Debug\sudokuFucker.csproj.CoreCompileInputs.cache
+C:\Users\Sergo\RiderProjects\sudokuMA\sudokuFucker\obj\Debug\sudokuFucker.exe
+C:\Users\Sergo\RiderProjects\sudokuMA\sudokuFucker\obj\Debug\sudokuFucker.pdb

@@ -11,31 +11,31 @@ namespace sudokuFucker
 
         public Sudoku(int[] input)
         {
-            Size = input.Length; // WHAT?
+            Size = (int) Math.Sqrt(Math.Sqrt(input.Length));
             Matrix = input.ToList();
         }
 
         public Sudoku(Sudoku prev)
         {
+            Size = prev.Size;
             Matrix = new List<int>(prev.Matrix);
         }
 
         public string SudokuToString()
         {
-            Console.WriteLine(Size);
             var fin = "";
-            for (var i = 1; i < 82; i++)
+            for (var i = 1; i < Size * Size * Size * Size + 1; i++)
             {
                 fin += Matrix[i - 1];
-                if (i % 9 == 0)
+                if (i % (Size * Size) == 0)
                 {
                     fin += "\n";
                 }
-                else if (i % 3 == 0)
+                else if (i % Size == 0)
                 {
                     fin += " ";
                 }
-                if (i % 27 == 0)
+                if (i % (Size * Size * Size) == 0)
                 {
                     fin += "\n";
                 }
