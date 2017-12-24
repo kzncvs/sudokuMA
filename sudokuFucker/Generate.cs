@@ -4,31 +4,44 @@ namespace sudokuFucker
 {
     public class Generate
     {
-        private int len = 9;
+        private readonly int Size;
         private readonly Random rnd = new Random();
-        public Sudoku _basic = new Sudoku(new[]
+        public Sudoku _basic;
+
+        public Generate(int size)
         {
-            1, 2, 3, 4, 5, 6, 7, 8, 9,
-            4, 5, 6, 7, 8, 9, 1, 2, 3,
-            7, 8, 9, 1, 2, 3, 4, 5, 6,
+            Size = size;
+            if (Size == 3)
+            {
+                _basic = new Sudoku(new[]
+                {
+                    1, 2, 3, 4, 5, 6, 7, 8, 9,
+                    4, 5, 6, 7, 8, 9, 1, 2, 3,
+                    7, 8, 9, 1, 2, 3, 4, 5, 6,
 
-            2, 3, 4, 5, 6, 7, 8, 9, 1,
-            5, 6, 7, 8, 9, 1, 2, 3, 4,
-            8, 9, 1, 2, 3, 4, 5, 6, 7,
+                    2, 3, 4, 5, 6, 7, 8, 9, 1,
+                    5, 6, 7, 8, 9, 1, 2, 3, 4,
+                    8, 9, 1, 2, 3, 4, 5, 6, 7,
 
-            3, 4, 5, 6, 7, 8, 9, 1, 2,
-            6, 7, 8, 9, 1, 2, 3, 4, 5,
-            9, 1, 2, 3, 4, 5, 6, 7, 8
-        });
-
+                    3, 4, 5, 6, 7, 8, 9, 1, 2,
+                    6, 7, 8, 9, 1, 2, 3, 4, 5,
+                    9, 1, 2, 3, 4, 5, 6, 7, 8
+                });
+            }
+            else if (Size == 2)
+            {
+                
+            }
+        }
+        
         private void Transposing()
         {
-            for (var i = 0; i < len; i++)
+            for (var i = 0; i < Size * Size; i++)
             {
                 for (var j = 0; j < i; j++)
                 {
-                    var ij = i * len + j;
-                    var ji = j * len + i;
+                    var ij = i * Size * Size + j;
+                    var ji = j * Size * Size + i;
                     _basic.Matrix[ij] ^= _basic.Matrix[ji];
                     _basic.Matrix[ji] ^= _basic.Matrix[ij];
                     _basic.Matrix[ij] ^= _basic.Matrix[ji];
@@ -38,78 +51,80 @@ namespace sudokuFucker
 
         private void SwapRowsSmall()
         {
-            var sector = rnd.Next(0, 3);
-            var toswap1 = rnd.Next(0, 3);
+            var sector = rnd.Next(0, Size);
+            var toswap1 = rnd.Next(0, Size);
             var toswap2 = toswap1;
             while (toswap2 == toswap1)
             {
-                toswap2 = rnd.Next(0, 3);
+                toswap2 = rnd.Next(0, Size);
             }
-            for (var i = 0; i < len; i++)
+            for (var i = 0; i < Size * Size; i++)
             {
-                var temp = _basic.Matrix[9 * toswap1 + i + sector * 9 * 3];
-                _basic.Matrix[9 * toswap1 + i + sector * 9 * 3] = _basic.Matrix[9 * toswap2 + i + sector * 9 * 3];
-                _basic.Matrix[9 * toswap2 + i + sector * 9 * 3] = temp;
+                var temp = _basic.Matrix[Size * Size * toswap1 + i + sector * Size * Size * Size];
+                _basic.Matrix[Size * Size * toswap1 + i + sector * Size * Size * Size] =
+                    _basic.Matrix[Size * Size * toswap2 + i + sector * Size * Size * Size];
+                _basic.Matrix[Size * Size * toswap2 + i + sector * Size * Size * Size] = temp;
             }
         }
 
         private void SwapColumnsSmall()
         {
-            var sector = rnd.Next(0, 3);
-            var toswap1 = rnd.Next(0, 3);
+            var sector = rnd.Next(0, Size);
+            var toswap1 = rnd.Next(0, Size);
             var toswap2 = toswap1;
             while (toswap2 == toswap1)
             {
-                toswap2 = rnd.Next(0, 3);
+                toswap2 = rnd.Next(0, Size);
             }
-            for (var i = 0; i < 81; i += 9)
+            for (var i = 0; i < Size * Size * Size * Size; i += Size * Size)
             {
-                var temp = _basic.Matrix[3 * sector + toswap1 + i];
-                _basic.Matrix[3 * sector + toswap1 + i] = _basic.Matrix[3 * sector + toswap2 + i];
-                _basic.Matrix[3 * sector + toswap2 + i] = temp;
+                var temp = _basic.Matrix[Size * sector + toswap1 + i];
+                _basic.Matrix[Size * sector + toswap1 + i] = _basic.Matrix[Size * sector + toswap2 + i];
+                _basic.Matrix[Size * sector + toswap2 + i] = temp;
             }
         }
 
         private void SwapRowsArea()
         {
-            var toswap1 = rnd.Next(0, 3);
+            var toswap1 = rnd.Next(0, Size);
             var toswap2 = toswap1;
             while (toswap2 == toswap1)
             {
-                toswap2 = rnd.Next(0, 3);
+                toswap2 = rnd.Next(0, Size);
             }
-            for (var i = 0; i < len; i++)
+            for (var i = 0; i < Size * Size; i++)
             {
-                for (var j = 0; j < 3; j++)
+                for (var j = 0; j < Size; j++)
                 {
-                    var temp = _basic.Matrix[27 * toswap1 + i + 9 * j];
-                    _basic.Matrix[27 * toswap1 + i + 9 * j] = _basic.Matrix[27 * toswap2 + i + 9 * j];
-                    _basic.Matrix[27 * toswap2 + i + 9 * j] = temp;
+                    var temp = _basic.Matrix[Size * Size * Size * toswap1 + i + Size * Size * j];
+                    _basic.Matrix[Size * Size * Size * toswap1 + i + Size * Size * j] =
+                        _basic.Matrix[Size * Size * Size * toswap2 + i + Size * Size * j];
+                    _basic.Matrix[Size * Size * Size * toswap2 + i + Size * Size * j] = temp;
                 }
             }
         }
 
         private void SwapColumnsArea()
         {
-            var toswap1 = rnd.Next(0, 3);
+            var toswap1 = rnd.Next(0, Size);
             var toswap2 = toswap1;
             while (toswap2 == toswap1)
             {
-                toswap2 = rnd.Next(0, 3);
+                toswap2 = rnd.Next(0, Size);
             }
-            for (var i = 0; i < 81; i += 9)
+            for (var i = 0; i < Size * Size * Size * Size; i += Size * Size)
             {
-                for (var j = 0; j < 3; j++)
+                for (var j = 0; j < Size; j++)
                 {
-                    var temp = _basic.Matrix[3 * toswap1 + i + j];
-                    _basic.Matrix[3 * toswap1 + i + j] = _basic.Matrix[3 * toswap2 + i + j];
-                    _basic.Matrix[3 * toswap2 + i + j] = temp;
+                    var temp = _basic.Matrix[Size * toswap1 + i + j];
+                    _basic.Matrix[Size * toswap1 + i + j] = _basic.Matrix[Size * toswap2 + i + j];
+                    _basic.Matrix[Size * toswap2 + i + j] = temp;
                 }
             }
         }
 
         private delegate void ShuffleMachine();
-        
+
         public void Shuffle(int shuffles = 150)
         {
             var turns = new ShuffleMachine[]
@@ -122,6 +137,5 @@ namespace sudokuFucker
                 turns[kek]();
             }
         }
-        
     }
 }
