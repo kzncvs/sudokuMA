@@ -25,22 +25,13 @@ namespace sudokuFucker
                 0, 0, 0, 0, 0, 5, 0, 9, 6,
                 0, 0, 0, 8, 0, 4, 5, 0, 0
             });
-            
-            var kek2 = new Sudoku(new[]
-            {
-                0,0,0,0,
-                0,0,0,0,
-                0,0,0,0,
-                0,0,0,0,
-            });
-            
-            
-            var check = Recursive.Solve(new Sudoku(kek2));
+                       
+            var check = Recursive.Solve(new Sudoku(kek3));
             Console.WriteLine(check.SudokuToString());
             stopWatch.Stop();
             Console.WriteLine(stopWatch.ElapsedMilliseconds.ToString() + " ms");
             
-/*            var keek = new Generate(3);
+/*            var keek = new Generate(4);
             keek.Shuffle();
             Console.WriteLine(keek._basic.SudokuToString());*/
 
