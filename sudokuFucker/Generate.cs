@@ -171,7 +171,16 @@ namespace sudokuFucker
 
         private bool MakeRec(int difficult, ref Sudoku puzzle)
         {
-            if (difficult == 0)
+            var cou = 0;
+            foreach (var elem in puzzle.Matrix)
+            {
+                if (elem == 0)
+                {
+                    cou++;
+                }
+            }
+            /*Console.WriteLine(cou);*/
+            if (difficult == cou)
             {
                 return true;
             }
@@ -194,11 +203,10 @@ namespace sudokuFucker
                         }
                     }
                     iter--;
-                    Console.WriteLine(rem);
+/*                    Console.WriteLine(rem);*/
                     puzzle.Matrix[rem] = 0;
                     if (Recursive.IsSolutionOlnyOne(puzzle))
                     {
-                        difficult--;
                         if (MakeRec(difficult, ref puzzle))
                         {
                             return true;
@@ -219,18 +227,18 @@ namespace sudokuFucker
             int difficult = 0;
             if (Diff == 0) // Easy
             {
-                difficult = (int) (((float) (Size * Size * Size * Size) / 100) * 70);
+                difficult = (int) (((float) (Size * Size * Size * Size) / 100) * 50);
             }
             else if (Diff == 1) // Mid
             {
-                difficult = (int) (((float) (Size * Size * Size * Size) / 100) * 75);
+                difficult = (int) (((float) (Size * Size * Size * Size) / 100) * 55);
             }
             else if (Diff == 2) // Hard
             {
-                difficult = (int) (((float) (Size * Size * Size * Size) / 100) * 80);
+                difficult = (int) (((float) (Size * Size * Size * Size) / 100) * 60);
             }
-            Shuffle();
-            Console.WriteLine(difficult);
+            Shuffle();/*
+            Console.WriteLine(Size * Size *Size * Size - difficult);*/
             MakeRec(difficult, ref _basic);
             return _basic;
         }

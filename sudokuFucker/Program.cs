@@ -29,7 +29,7 @@ namespace sudokuFucker
             var check = Recursive.Solve(new Sudoku(kek3));
             Console.WriteLine(check.SudokuToString());*/
 
-            var keek = new Generate(2, 0);
+            var keek = new Generate(2, 2);
             var ll = keek.Make();
             Console.WriteLine(ll.SudokuToString());
 
