@@ -186,7 +186,7 @@ namespace sudokuFucker
             }
             else
             {
-                var iter = 10;
+                var iter = Size;
                 while (true)
                 {
                     if (iter == 0)
