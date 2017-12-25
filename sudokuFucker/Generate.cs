@@ -11,6 +11,7 @@ namespace sudokuFucker
 
         public Generate(int size, int diff = 0)
         {
+            Diff = diff;
             Size = size;
             if (Size == 3)
             {
@@ -166,7 +167,72 @@ namespace sudokuFucker
                 turns[kek]();
             }
         }
-        
-        
+
+
+        private bool MakeRec(int difficult, ref Sudoku puzzle)
+        {
+            if (difficult == 0)
+            {
+                return true;
+            }
+            else
+            {
+                var iter = 10;
+                while (true)
+                {
+                    if (iter == 0)
+                    {
+                        break;
+                    }
+                    int rem;
+                    while (true)
+                    {
+                        rem = rnd.Next(0, Size * Size * Size * Size);
+                        if (puzzle.Matrix[rem] != 0)
+                        {
+                            break;
+                        }
+                    }
+                    iter--;
+                    Console.WriteLine(rem);
+                    puzzle.Matrix[rem] = 0;
+                    if (Recursive.IsSolutionOlnyOne(puzzle))
+                    {
+                        difficult--;
+                        if (MakeRec(difficult, ref puzzle))
+                        {
+                            return true;
+                        }
+                    }
+                    else
+                    {
+                        return false;
+                    }
+                }
+                return false;
+            }
+        }
+
+        public Sudoku Make()
+        {
+            //How many cells should be removed
+            int difficult = 0;
+            if (Diff == 0) // Easy
+            {
+                difficult = (int) (((float) (Size * Size * Size * Size) / 100) * 70);
+            }
+            else if (Diff == 1) // Mid
+            {
+                difficult = (int) (((float) (Size * Size * Size * Size) / 100) * 75);
+            }
+            else if (Diff == 2) // Hard
+            {
+                difficult = (int) (((float) (Size * Size * Size * Size) / 100) * 80);
+            }
+            Shuffle();
+            Console.WriteLine(difficult);
+            MakeRec(difficult, ref _basic);
+            return _basic;
+        }
     }
 }

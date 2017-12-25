@@ -10,7 +10,7 @@ namespace sudokuFucker
         {
             var stopWatch = new Stopwatch();
             stopWatch.Start();
-            
+/*            
             var kek3 = new Sudoku(new[]
             {
                 4, 0, 3, 0, 0, 2, 0, 0, 0,
@@ -27,14 +27,14 @@ namespace sudokuFucker
             });
                        
             var check = Recursive.Solve(new Sudoku(kek3));
-            Console.WriteLine(check.SudokuToString());
+            Console.WriteLine(check.SudokuToString());*/
+
+            var keek = new Generate(2, 0);
+            var ll = keek.Make();
+            Console.WriteLine(ll.SudokuToString());
+
             stopWatch.Stop();
             Console.WriteLine(stopWatch.ElapsedMilliseconds.ToString() + " ms");
-            
-/*            var keek = new Generate(4);
-            keek.Shuffle();
-            Console.WriteLine(keek._basic.SudokuToString());*/
-
         }
     }
 }
